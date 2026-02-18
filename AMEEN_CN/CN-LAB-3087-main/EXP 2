@@ -1,19 +1,17 @@
-
 import java.io.*;
-import java.net.*;
+import java.net.URL;
 
 public class Download {
-
     public static void main(String[] args) {
-        String fileName = "digital_image_processing.jpg";
-        String website = "http://tutorialspoint.com/java_dip/images/" + fileName;
-
-        System.out.println("Downloading File From: " + website);
-
         try {
+            String fileName = "digital_image_processing.jpg";
+            String website = "http://tutorialspoint.com/java_dip/images/" + fileName;
+
+            System.out.println("Downloading File From: " + website);
+
             URL url = new URL(website);
             InputStream inputStream = url.openStream();
-            FileOutputStream outputStream = new FileOutputStream(fileName);
+            OutputStream outputStream = new FileOutputStream(fileName);
 
             byte[] buffer = new byte[2048];
             int length;
@@ -26,7 +24,8 @@ public class Download {
             inputStream.close();
             outputStream.close();
 
-            System.out.println("Download Completed Successfully.");
+            System.out.println("Download completed successfully!");
+
         } catch (Exception e) {
             System.out.println("Exception: " + e.getMessage());
         }
